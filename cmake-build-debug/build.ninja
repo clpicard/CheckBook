@@ -49,11 +49,17 @@ cmake_ninja_workdir = C$:/Users/caden.picard/CLionProjects/Checkbook/cmake-build
 
 build cmake_object_order_depends_target_Checkbook: phony || .
 
-build CMakeFiles/Checkbook.dir/clpicard_HW1_Q1.cpp.obj: CXX_COMPILER__Checkbook_unscanned_Debug C$:/Users/caden.picard/CLionProjects/Checkbook/clpicard_HW1_Q1.cpp || cmake_object_order_depends_target_Checkbook
-  DEP_FILE = CMakeFiles\Checkbook.dir\clpicard_HW1_Q1.cpp.obj.d
+build CMakeFiles/Checkbook.dir/Homework1/clpicard_HW1_Q1.cpp.obj: CXX_COMPILER__Checkbook_unscanned_Debug C$:/Users/caden.picard/CLionProjects/Checkbook/Homework1/clpicard_HW1_Q1.cpp || cmake_object_order_depends_target_Checkbook
+  DEP_FILE = CMakeFiles\Checkbook.dir\Homework1\clpicard_HW1_Q1.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Checkbook.dir
-  OBJECT_FILE_DIR = CMakeFiles\Checkbook.dir
+  OBJECT_FILE_DIR = CMakeFiles\Checkbook.dir\Homework1
+
+build CMakeFiles/Checkbook.dir/Homework2/clpicard_HW2_Q1.cpp.obj: CXX_COMPILER__Checkbook_unscanned_Debug C$:/Users/caden.picard/CLionProjects/Checkbook/Homework2/clpicard_HW2_Q1.cpp || cmake_object_order_depends_target_Checkbook
+  DEP_FILE = CMakeFiles\Checkbook.dir\Homework2\clpicard_HW2_Q1.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Checkbook.dir
+  OBJECT_FILE_DIR = CMakeFiles\Checkbook.dir\Homework2
 
 
 # =============================================================================
@@ -63,7 +69,7 @@ build CMakeFiles/Checkbook.dir/clpicard_HW1_Q1.cpp.obj: CXX_COMPILER__Checkbook_
 #############################################
 # Link the executable Checkbook.exe
 
-build Checkbook.exe: CXX_EXECUTABLE_LINKER__Checkbook_Debug CMakeFiles/Checkbook.dir/clpicard_HW1_Q1.cpp.obj
+build Checkbook.exe: CXX_EXECUTABLE_LINKER__Checkbook_Debug CMakeFiles/Checkbook.dir/Homework1/clpicard_HW1_Q1.cpp.obj CMakeFiles/Checkbook.dir/Homework2/clpicard_HW2_Q1.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Checkbook.dir
