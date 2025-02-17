@@ -103,13 +103,61 @@ public:
         balance += deposit_amount;
         lastDeposit = deposit_amount;
     }
+    bool writeCheck(Check c_amount) {
+        if (!(c_amount > balance)) { // Using overloaded operator instead of dot notation
+
+            //Work on the current check
+            chkPtr[numOfChecks] = c_amount;
+            chkPtr[numOfChecks].CheckMemo = memos[rand() % 8]; // Assign random memo
+            chkPtr[numOfChecks].CheckNum = numOfChecks + 1;
+            balance -= c_amount.CheckAmount; // Deduct check amount from balance
+            numOfChecks++; // iterate over checks
+
+            if (numOfChecks >= checkBookSize / 2) {
+                checkBookSize *= 2;
+                //create new checkPointer
+                Check* newChkPtr = new Check[checkBookSize];
+                // copy all of the checks from the old pointer to the new one (got some help on this)
+                for (int i = 0; i < numOfChecks; i++) {
+                    newChkPtr[i] = chkPtr[i];
+                }
+                delete[] chkPtr;
+                chkPtr = newChkPtr;
+                cout << "Check written for:$" << c_amount.CheckAmount << endl;
+                cout << "We ordered you a new checkbook" << endl;
+            }
+
+            return true;
+        }
+        return false;
+    }
 
 
+    void displayChecks() const {
+        cout << "Checks written: " << endl;
+        // For all the checks in the checkbook, go through the array and display what's there
+        for (int i = numOfChecks - 1; i >= 0; i--) {
+            cout << chkPtr[i] << endl;
+        }
+    }
 
+    float getBalance() const { return balance; }
+    int getNumOfChecks() const { return numOfChecks; }
+};
 
-
+void checkTest(CheckBook& cb, float balance) {
+    while (balance > 0 && cb.getBalance() > 0) {
+        // make sure the amount is random and less than 50 Got assistance here.
+        float checkAmount = (rand() % 50) + 1;
+        if (!cb.writeCheck(Check(checkAmount, 0))) break;
+        balance -= checkAmount;
+    }
+    cb.displayChecks();
+}
 
 int main() {
-
+    CheckBook cb(250);
+    checkTest(cb, 250);
+    cout<< "Total # of checks written:" << cb.getNumOfChecks() << " Ending balance is:$" <<cb.getBalance() << endl;
     return 0;
 }
